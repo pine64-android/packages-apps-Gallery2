@@ -34,7 +34,7 @@ void ErrExit(j_common_ptr cinfo) {
  * to logcat's error log.
  */
 void ErrOutput(j_common_ptr cinfo) {
-    ErrManager* mgr = reinterpret_cast<ErrManager*>(cinfo->err);
+    //ErrManager* mgr = reinterpret_cast<ErrManager*>(cinfo->err);
     char buf[JMSG_LENGTH_MAX];
     (*cinfo->err->format_message) (cinfo, buf);
     buf[JMSG_LENGTH_MAX - 1] = '\0';  // Force null terminator

@@ -33,8 +33,8 @@ void estmateWhite(unsigned char *src, int len, int *wr, int *wb, int *wg){
         histG[(src[GREEN])]++;
         histB[(src[BLUE])]++;
     }
-    int min_r = -1, min_g = -1,min_b = -1;
-    int max_r = 0, max_g = 0,max_b = 0;
+    /*int min_r = -1, min_g = -1,min_b = -1;
+    int max_r = 0, max_g = 0,max_b = 0;*/
     int sum_r = 0,sum_g=0,sum_b=0;
 
     for (i = 1; i < RANGE-1; i++) {
@@ -45,7 +45,7 @@ void estmateWhite(unsigned char *src, int len, int *wr, int *wb, int *wg){
         sum_g += g;
         sum_b += b;
 
-        if (r>0){
+       /* if (r>0){
             if (min_r < 0) min_r = i;
             max_r = i;
         }
@@ -56,7 +56,7 @@ void estmateWhite(unsigned char *src, int len, int *wr, int *wb, int *wg){
         if (b>0){
             if (min_b < 0) min_b = i;
             max_b = i;
-        }
+        }*/
     }
 
     int sum15r = 0,sum15g=0,sum15b=0;
@@ -99,10 +99,10 @@ void estmateWhite(unsigned char *src, int len, int *wr, int *wb, int *wg){
 }
 
 void estmateWhiteBox(unsigned char *src, int iw, int ih, int x,int y, int *wr, int *wb, int *wg){
-    int r;
-    int g;
-    int b;
-    int sum;
+    int r = 0;
+    int g = 0;
+    int b = 0;
+    int sum = 0;
     int xp,yp;
     int bounds = 5;
     if (x<0) x = bounds;

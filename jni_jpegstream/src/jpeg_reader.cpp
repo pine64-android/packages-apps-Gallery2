@@ -183,12 +183,12 @@ void JpegReader::formatPixels(uint8_t* buf, int32_t len) {
     switch (mInfo.out_color_space) {
     case JCS_CMYK:
         // Convert CMYK to RGB
-        int r, g, b, c, m, y, k;
+        int r, g, b/*, c, m, y, k*/;
         for (int i = 0; i < len; i += 4) {
-            c = buf[i + 0];
-            m = buf[i + 1];
-            y = buf[i + 2];
-            k = buf[i + 3];
+            int c = buf[i + 0];
+            int m = buf[i + 1];
+            int y = buf[i + 2];
+            int k = buf[i + 3];
             // Handle fmt for weird photoshop markers
             if (mInfo.saw_Adobe_marker) {
                 r = (k * c) / 255;
@@ -215,7 +215,7 @@ void JpegReader::formatPixels(uint8_t* buf, int32_t len) {
     // Do endianness and alpha for output format
     if (mFormat == Jpeg_Config::FORMAT_RGBA) {
         // Set alphas to 255
-        uint8_t* end = buf + len - 1;
+        //uint8_t* end = buf + len - 1;
         for (int i = len - 1; i >= 0; i -= 4) {
             buf[i] = 255;
             buf[i - 1] = *--iter;
@@ -224,12 +224,12 @@ void JpegReader::formatPixels(uint8_t* buf, int32_t len) {
         }
     } else if (mFormat == Jpeg_Config::FORMAT_ABGR) {
         // Reverse endianness and set alphas to 255
-        uint8_t* end = buf + len - 1;
-        int r, g, b;
+       // uint8_t* end = buf + len - 1;
+        //int r, g, b;
         for (int i = len - 1; i >= 0; i -= 4) {
-            b = *--iter;
-            g = *--iter;
-            r = *--iter;
+            int b = *--iter;
+            int g = *--iter;
+            int r = *--iter;
             buf[i] = r;
             buf[i - 1] = g;
             buf[i - 2] = b;

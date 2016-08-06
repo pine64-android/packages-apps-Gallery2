@@ -84,7 +84,6 @@ void hsv2rgb(unsigned short *hsv,int hsvOff, unsigned char *rgb,int rgbOff)
     int ABITS = 4;
     int HSCALE = 256;
     int m;
-    int H,X,ih,is,iv;
     int k1=255<<ABITS;
     int k2=HSCALE<<ABITS;
     int k3=1<<(ABITS-1);
@@ -104,6 +103,7 @@ void hsv2rgb(unsigned short *hsv,int hsvOff, unsigned char *rgb,int rgbOff)
     if (cs == 0) {
         rb = ( rg = ( rr =( cv >> ABITS) ));
     } else {
+        int H,X,ih,is,iv;
         ih=(int)ch;
         is=(int)cs;
         iv=(int)cv;

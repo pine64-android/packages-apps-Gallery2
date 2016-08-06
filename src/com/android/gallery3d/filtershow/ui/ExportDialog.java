@@ -107,6 +107,7 @@ public class ExportDialog extends DialogFragment implements View.OnClickListener
 
         mOriginalBounds = MasterImage.getImage().getOriginalBounds();
         ImagePreset preset = MasterImage.getImage().getPreset();
+        if (mOriginalBounds != null) {
         mOriginalBounds = preset.finalGeometryRect(mOriginalBounds.width(),
                 mOriginalBounds.height());
         mRatio = mOriginalBounds.width() / (float) mOriginalBounds.height();
@@ -114,6 +115,7 @@ public class ExportDialog extends DialogFragment implements View.OnClickListener
         mHeightText.setText("" + mOriginalBounds.height());
         mExportWidth = mOriginalBounds.width();
         mExportHeight = mOriginalBounds.height();
+        }
         mWidthText.addTextChangedListener(new Watcher(mWidthText));
         mHeightText.addTextChangedListener(new Watcher(mHeightText));
 
@@ -209,7 +211,7 @@ public class ExportDialog extends DialogFragment implements View.OnClickListener
                 String value = String.valueOf(mWidthText.getText());
                 if (value.length() > 0) {
                     width = Integer.parseInt(value);
-                    if (width > mOriginalBounds.width()) {
+                    if (mOriginalBounds != null && width > mOriginalBounds.width()) {
                         width = mOriginalBounds.width();
                         mWidthText.setText("" + width);
                     }
@@ -226,7 +228,7 @@ public class ExportDialog extends DialogFragment implements View.OnClickListener
                 String value = String.valueOf(mHeightText.getText());
                 if (value.length() > 0) {
                     height = Integer.parseInt(value);
-                    if (height > mOriginalBounds.height()) {
+                    if (mOriginalBounds != null && height > mOriginalBounds.height()) {
                         height = mOriginalBounds.height();
                         mHeightText.setText("" + height);
                     }

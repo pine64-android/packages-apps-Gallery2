@@ -1036,6 +1036,7 @@ public class FilterShowActivity extends FragmentActivity implements OnItemClickL
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.undoButton: {
+                if (mMasterImage == null) return true;
                 HistoryManager adapter = mMasterImage.getHistory();
                 int position = adapter.undo();
                 mMasterImage.onHistoryItemClick(position);
@@ -1044,6 +1045,7 @@ public class FilterShowActivity extends FragmentActivity implements OnItemClickL
                 return true;
             }
             case R.id.redoButton: {
+                if (mMasterImage == null) return true;
                 HistoryManager adapter = mMasterImage.getHistory();
                 int position = adapter.redo();
                 mMasterImage.onHistoryItemClick(position);
@@ -1290,6 +1292,7 @@ public class FilterShowActivity extends FragmentActivity implements OnItemClickL
     }
 
     void resetHistory() {
+      if (mMasterImage != null) {
         HistoryManager adapter = mMasterImage.getHistory();
         adapter.reset();
         HistoryItem historyItem = adapter.getItem(0);
@@ -1305,6 +1308,7 @@ public class FilterShowActivity extends FragmentActivity implements OnItemClickL
         }
         mMasterImage.setPreset(original, rep, true);
         invalidateViews();
+      }
         backToMain();
     }
 

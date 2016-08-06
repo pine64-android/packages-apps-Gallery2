@@ -133,6 +133,7 @@ public class StatePanelTrack extends LinearLayout implements PanelTrack {
     }
 
     public void setAdapter(StateAdapter adapter) {
+        if (adapter == null) return;
         mAdapter = adapter;
         mAdapter.registerDataSetObserver(mObserver);
         mAdapter.setOrientation(getOrientation());

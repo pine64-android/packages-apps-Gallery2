@@ -32,7 +32,7 @@ void JNIFUNCF(ImageFilterVibrance, nativeApplyFilter, jobject bitmap, jint width
     float Rt = Rf * MS;
     float Gt = Gf * MS;
     float Bt = Bf * MS;
-    float R, G, B;
+    //float R, G, B;
     for (i = 0; i < len; i+=4)
     {
         int r = destination[RED];
@@ -45,10 +45,10 @@ void JNIFUNCF(ImageFilterVibrance, nativeApplyFilter, jobject bitmap, jint width
         Rt = Rf * MS;
         Gt = Gf * MS;
         Bt = Bf * MS;
-        int t = (r + g) / 2;
-        R = r;
-        G = g;
-        B = b;
+       //int t = (r + g) / 2;
+        float R = r;
+        float G = g;
+        float B = b;
 
         float Rc = R * (Rt + S) + G * Gt + B * Bt;
         float Gc = R * Rt + G * (Gt + S) + B * Bt;

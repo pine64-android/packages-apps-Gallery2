@@ -347,7 +347,7 @@ public class SaveImage {
         // If no file is moved, newSourceUri will be the same as mSourceUri.
         Uri newSourceUri = mSourceUri;
         if (!flatten) {
-            newSourceUri = moveSrcToAuxIfNeeded(mSourceUri, mDestinationFile);
+            //newSourceUri = moveSrcToAuxIfNeeded(mSourceUri, mDestinationFile); // remove this because filebrowser will create a null pitch when editing.
         }
 
         Uri savedUri = mSelectedImageUri;

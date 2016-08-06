@@ -88,8 +88,10 @@ public final class ImageLoader {
             return null;
         }
         int index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
-        cursor.moveToFirst();
-        return cursor.getString(index);
+        if (cursor.moveToFirst())
+            return cursor.getString(index);
+        else
+            return null;
     }
 
     /**

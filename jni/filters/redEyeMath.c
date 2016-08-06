@@ -111,7 +111,7 @@ void filterRedEye(unsigned char *src, unsigned char *dest, int iw, int ih, short
     int recX = rect[0], recY = rect[1], recW = rect[2], recH = rect[3];
     unsigned char *mask1 = (unsigned char *) malloc(recW * recH);
     unsigned char *mask2 = (unsigned char *)malloc(recW*recH);
-    int QUE_LEN = 100;
+    //int QUE_LEN = 100;
     int y, x, i;
 
     rect[0] = MAX(rect[0],0);

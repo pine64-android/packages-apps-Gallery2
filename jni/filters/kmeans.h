@@ -189,9 +189,9 @@ void runKMeansWithPicks(int k, T finalCentroids[], T values[], int len, int dime
         T * c1 = initialPicks;
         T * c2 = finalCentroids;
         T * temp;
-        int ret = 1;
+        //int ret = 1;
         for (x = 0; x < iterations; x++) {
-            ret = calculateNewCentroids<T, N>(k, values, len, dimension, stride, c1, c2);
+            int ret = calculateNewCentroids<T, N>(k, values, len, dimension, stride, c1, c2);
             temp = c1;
             c1 = c2;
             c2 = temp;
