@@ -773,7 +773,7 @@ public abstract class PhotoPage extends ActivityState implements
 
         int supportedOperations = mCurrentPhoto.getSupportedOperations();
         if (mReadOnlyView) {
-            supportedOperations ^= MediaObject.SUPPORT_EDIT;
+            //supportedOperations ^= MediaObject.SUPPORT_EDIT;
         }
         if (mSecureAlbum != null) {
             supportedOperations &= MediaObject.SUPPORT_DELETE;
@@ -1053,6 +1053,7 @@ public abstract class PhotoPage extends ActivityState implements
                         : REQUEST_CROP);
                 return true;
             }
+			/*
             case R.id.action_trim: {
                 Intent intent = new Intent(mActivity, TrimVideo.class);
                 intent.setData(manager.getContentUri(path));
@@ -1067,6 +1068,7 @@ public abstract class PhotoPage extends ActivityState implements
                 muteVideo.muteInBackground();
                 return true;
             }
+			*/
             case R.id.action_edit: {
                 launchPhotoEditor();
                 return true;
